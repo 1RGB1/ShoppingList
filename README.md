@@ -1,5 +1,7 @@
 # ShoppingList
 
+<img src="https://github.com/1RGB1/GitRepoFind/blob/main/ShoppingList/ScreenShots/AppIcon.png" width="100" height="100" />
+
 ## Description
 
 - Application to show a list of shopping items in a simple way
