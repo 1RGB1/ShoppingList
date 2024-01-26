@@ -21,16 +21,16 @@
                         <rect key="frame" x="15" y="10" width="357" height="155"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xut-uA-0kX" userLabel="ID Stack View">
-                                <rect key="frame" x="15" y="10" width="327" height="90"/>
+                                <rect key="frame" x="15" y="10" width="242" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daz-f9-79L">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="21.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="070-Bf-gMV">
-                                        <rect key="frame" x="0.0" y="21.5" width="327" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="21.5" width="242" height="68.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="A3e-YX-kSg" userLabel="Info Stack View">
-                                <rect key="frame" x="15" y="105" width="327" height="40"/>
+                                <rect key="frame" x="15" y="105" width="242" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xxK-D0-9fv" userLabel="Language Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="18"/>
@@ -78,6 +78,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RId-a9-wsE">
+                                <rect key="frame" x="272" y="59" width="70" height="37"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-82-tNb" userLabel="Edit Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="37"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ic_edit"/>
+                                        <connections>
+                                            <action selector="editTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HQM-gO-DCC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-cR-wVs" userLabel="Delete Button">
+                                        <rect key="frame" x="35" y="0.0" width="35" height="37"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ic_delete"/>
+                                        <connections>
+                                            <action selector="deleteTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xxa-4J-4Pq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -86,8 +107,11 @@
                             <constraint firstItem="A3e-YX-kSg" firstAttribute="leading" secondItem="xut-uA-0kX" secondAttribute="leading" id="FBw-6a-1L3"/>
                             <constraint firstAttribute="bottom" secondItem="A3e-YX-kSg" secondAttribute="bottom" constant="10" id="HoS-ni-sNa"/>
                             <constraint firstItem="xut-uA-0kX" firstAttribute="top" secondItem="cvz-bT-gj2" secondAttribute="top" constant="10" id="JPa-L3-2wL"/>
-                            <constraint firstAttribute="trailing" secondItem="xut-uA-0kX" secondAttribute="trailing" constant="15" id="TQZ-uR-NuX"/>
+                            <constraint firstItem="RId-a9-wsE" firstAttribute="leading" secondItem="xut-uA-0kX" secondAttribute="trailing" constant="15" id="Rdy-JO-G5J"/>
+                            <constraint firstAttribute="trailing" secondItem="xut-uA-0kX" secondAttribute="trailing" constant="100" id="TQZ-uR-NuX"/>
                             <constraint firstItem="xut-uA-0kX" firstAttribute="leading" secondItem="cvz-bT-gj2" secondAttribute="leading" constant="15" id="V1D-GE-WsB"/>
+                            <constraint firstAttribute="trailing" secondItem="RId-a9-wsE" secondAttribute="trailing" constant="15" id="nmX-Nf-Am4"/>
+                            <constraint firstItem="RId-a9-wsE" firstAttribute="centerY" secondItem="cvz-bT-gj2" secondAttribute="centerY" id="nwI-ZA-haJ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -112,6 +136,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ic_delete" width="19" height="23"/>
+        <image name="ic_edit" width="16" height="16"/>
         <image name="ic_selected" width="18" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

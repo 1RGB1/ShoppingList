@@ -58,7 +58,8 @@ class ShoppingListViewController: UIViewController {
     fileprivate func bindDataSourceToTableView() {
         viewModel.dataSource
             .bind(to: itemsTableView.rx.items(cellIdentifier: ItemTableViewCell.self.reuseIdentifier)) { (row, viewModel: BaseCellViewModel, cell: ItemTableViewCell) in
-                cell.setUp(model: viewModel)
+                cell.setUp(model: viewModel, row: row)
+                cell.delegate = self
             }
             .disposed(by: disposeBag)
     }
@@ -111,5 +112,14 @@ extension ShoppingListViewController: UITextFieldDelegate {
 extension ShoppingListViewController: SortViewDelegate {
     func applyTapped(sortBy: SortBy, orderBy: OrderBy) {
         sortView?.isHidden = true
+    }
+}
+
+extension ShoppingListViewController: ItemTableViewCellDelegate {
+    func editTappedAtIndex(_ index: Int) {
+    }
+    
+    func deleteTappedAtIndex(_ index: Int) {
+        viewModel.deleteItemAtIndex(index)
     }
 }

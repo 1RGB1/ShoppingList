@@ -11,6 +11,7 @@ import RxSwift
 protocol ShoppingListUseCaseProtocol {
     func loadItems() -> Observable<[ItemModel]>
     func findItem(_ query: String) -> Observable<[ItemModel]>
+    func deleteItemAtIndex(_ index: Int) -> Observable<[ItemModel]>
 }
 
 struct ShoppingListUseCase: ShoppingListUseCaseProtocol {
@@ -28,14 +29,20 @@ struct ShoppingListUseCase: ShoppingListUseCaseProtocol {
     }
     
     func findItem(_ query: String) -> Observable<[ItemModel]> {
-        return repo.findItem(query)
-            .flatMap { (result: Result<[ItemModel], LocalError>) -> Observable<[ItemModel]> in
-                switch result {
-                case .success(let items):
-                    return Observable<[ItemModel]>.just(items)
-                case .failure(let error):
-                    return Observable<[ItemModel]>.error(error)
-                }
+        return loadItems()
+            .flatMap { items -> Observable<[ItemModel]> in
+                let filtered = items.filter { ($0.name?.lowercased() ?? "").contains(query.lowercased()) || ($0.description?.lowercased() ?? "").contains(query.lowercased()) }
+                return Observable<[ItemModel]>.just(filtered)
+            }
+    }
+    
+    func deleteItemAtIndex(_ index: Int) -> Observable<[ItemModel]> {
+        return loadItems()
+            .flatMap { items -> Observable<[ItemModel]> in
+                var newList = items
+                newList.remove(at: index)
+                Global.items.remove(at: index)
+                return Observable<[ItemModel]>.just(newList)
             }
     }
     

@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ItemTableViewCellDelegate: BaseCellDelegate {
+    func deleteTappedAtIndex(_ index: Int)
+    func editTappedAtIndex(_ index: Int)
+}
+
 class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellContentView: UIView!
@@ -17,6 +22,7 @@ class ItemTableViewCell: UITableViewCell {
     
     weak var delegate: BaseCellDelegate?
     var viewModel: ItemCellViewModel?
+    var index: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,12 +39,23 @@ class ItemTableViewCell: UITableViewCell {
         
         viewModel?.itemModel.isBought?.toggle()
     }
+    
+    @IBAction func editTapped(_ sender: Any) {
+        guard let index = index else { return }
+        (delegate as? ItemTableViewCellDelegate)?.editTappedAtIndex(index)
+    }
+    
+    @IBAction func deleteTapped(_ sender: Any) {
+        guard let index = index else { return }
+        (delegate as? ItemTableViewCellDelegate)?.deleteTappedAtIndex(index)
+    }
 }
 
 extension ItemTableViewCell: CellConfigurable {
-    func setUp(model: BaseCellViewModel) {
+    func setUp(model: BaseCellViewModel, row: Int) {
         guard let model = model as? ItemCellViewModel else { return }
         
+        self.index = row
         self.viewModel = model
         
         itemNameLabel.text = model.itemModel.name ?? "N/A"

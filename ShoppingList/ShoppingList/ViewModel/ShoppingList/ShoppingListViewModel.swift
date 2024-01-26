@@ -41,6 +41,17 @@ class ShoppingListViewModel {
             .disposed(by: disposeBag)
     }
     
+    func deleteItemAtIndex(_ index: Int) {
+        useCase.deleteItemAtIndex(index)
+            .subscribe(
+                onNext: { [weak self] items in
+                    guard let self = self else { return }
+                    self.dataSource.onNext(self.prepCellsViewModelsWithRepos(items))
+                }
+            )
+            .disposed(by: disposeBag)
+    }
+    
     fileprivate func prepCellsViewModelsWithRepos(_ items: [ItemModel]) -> [BaseCellViewModel] {
         
         var cellsViewModels = [BaseCellViewModel]()
