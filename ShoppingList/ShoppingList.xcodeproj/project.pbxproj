@@ -17,6 +17,7 @@
 		E070972B2B637C9A00914214 /* ShoppingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070972A2B637C9A00914214 /* ShoppingListTests.swift */; };
 		E07097352B637C9A00914214 /* ShoppingListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097342B637C9A00914214 /* ShoppingListUITests.swift */; };
 		E07097372B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097362B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift */; };
+		E070974D2B63816100914214 /* ItemsList.json in Resources */ = {isa = PBXBuildFile; fileRef = E070974C2B63816100914214 /* ItemsList.json */; };
 		F9BC2DD5532A14733242E0AF /* Pods_ShoppingList_ShoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		E07097302B637C9A00914214 /* ShoppingListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07097342B637C9A00914214 /* ShoppingListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUITests.swift; sourceTree = "<group>"; };
 		E07097362B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E070974C2B63816100914214 /* ItemsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItemsList.json; sourceTree = "<group>"; };
 		E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingList_ShoppingListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,7 +101,6 @@
 				7EC904BA37B4262E20AC553B /* Pods-ShoppingListTests.debug.xcconfig */,
 				866898DE43210DB747D48BBA /* Pods-ShoppingListTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -202,6 +203,7 @@
 		E07097472B637ED000914214 /* MockModel */ = {
 			isa = PBXGroup;
 			children = (
+				E070974C2B63816100914214 /* ItemsList.json */,
 			);
 			path = MockModel;
 			sourceTree = "<group>";
@@ -346,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E070974D2B63816100914214 /* ItemsList.json in Resources */,
 				E07097202B637C9A00914214 /* LaunchScreen.storyboard in Resources */,
 				E070971D2B637C9A00914214 /* Assets.xcassets in Resources */,
 				E070971B2B637C9800914214 /* Main.storyboard in Resources */,
