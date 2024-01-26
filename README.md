@@ -1,6 +1,6 @@
 # ShoppingList
 
-<img src="https://github.com/1RGB1/GitRepoFind/blob/main/ShoppingList/ScreenShots/AppIcon.png" width="100" height="100" />
+<img src="https://github.com/1RGB1/ShoppingList/blob/main/ShoppingList/ScreenShots/AppIcon.png" width="100" height="100" />
 
 ## Description
 
