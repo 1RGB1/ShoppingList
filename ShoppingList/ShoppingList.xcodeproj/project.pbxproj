@@ -25,6 +25,7 @@
 		E07097572B6382E800914214 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097562B6382E800914214 /* UITableViewExtension.swift */; };
 		E07097592B6382F300914214 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097582B6382F300914214 /* UITableViewCellExtension.swift */; };
 		E070975B2B63830100914214 /* MockHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070975A2B63830100914214 /* MockHandler.swift */; };
+		E070975E2B63849500914214 /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070975D2B63849500914214 /* BaseCellViewModel.swift */; };
 		F9BC2DD5532A14733242E0AF /* Pods_ShoppingList_ShoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		E07097562B6382E800914214 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		E07097582B6382F300914214 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		E070975A2B63830100914214 /* MockHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandler.swift; sourceTree = "<group>"; };
+		E070975D2B63849500914214 /* BaseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellViewModel.swift; sourceTree = "<group>"; };
 		E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingList_ShoppingListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 		E07097442B637EAE00914214 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E070975C2B63848D00914214 /* Base */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -258,6 +261,14 @@
 				E07097522B63829C00914214 /* BaseCellDelegate.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E070975C2B63848D00914214 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E070975D2B63849500914214 /* BaseCellViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +520,7 @@
 				E070974F2B63828800914214 /* ReusableProtocol.swift in Sources */,
 				E07097572B6382E800914214 /* UITableViewExtension.swift in Sources */,
 				E07097592B6382F300914214 /* UITableViewCellExtension.swift in Sources */,
+				E070975E2B63849500914214 /* BaseCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
