@@ -18,6 +18,13 @@
 		E07097352B637C9A00914214 /* ShoppingListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097342B637C9A00914214 /* ShoppingListUITests.swift */; };
 		E07097372B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097362B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift */; };
 		E070974D2B63816100914214 /* ItemsList.json in Resources */ = {isa = PBXBuildFile; fileRef = E070974C2B63816100914214 /* ItemsList.json */; };
+		E070974F2B63828800914214 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070974E2B63828800914214 /* ReusableProtocol.swift */; };
+		E07097512B63829200914214 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097502B63829200914214 /* CellConfigurable.swift */; };
+		E07097532B63829C00914214 /* BaseCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097522B63829C00914214 /* BaseCellDelegate.swift */; };
+		E07097552B6382DC00914214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097542B6382DC00914214 /* UIViewExtension.swift */; };
+		E07097572B6382E800914214 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097562B6382E800914214 /* UITableViewExtension.swift */; };
+		E07097592B6382F300914214 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097582B6382F300914214 /* UITableViewCellExtension.swift */; };
+		E070975B2B63830100914214 /* MockHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070975A2B63830100914214 /* MockHandler.swift */; };
 		F9BC2DD5532A14733242E0AF /* Pods_ShoppingList_ShoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +67,13 @@
 		E07097342B637C9A00914214 /* ShoppingListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUITests.swift; sourceTree = "<group>"; };
 		E07097362B637C9A00914214 /* ShoppingListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E070974C2B63816100914214 /* ItemsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItemsList.json; sourceTree = "<group>"; };
+		E070974E2B63828800914214 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		E07097502B63829200914214 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
+		E07097522B63829C00914214 /* BaseCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellDelegate.swift; sourceTree = "<group>"; };
+		E07097542B6382DC00914214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		E07097562B6382E800914214 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		E07097582B6382F300914214 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		E070975A2B63830100914214 /* MockHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandler.swift; sourceTree = "<group>"; };
 		E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingList_ShoppingListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,6 +235,9 @@
 		E07097492B637EE300914214 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E07097542B6382DC00914214 /* UIViewExtension.swift */,
+				E07097562B6382E800914214 /* UITableViewExtension.swift */,
+				E07097582B6382F300914214 /* UITableViewCellExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 		E070974A2B637EED00914214 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				E070975A2B63830100914214 /* MockHandler.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -235,6 +253,9 @@
 		E070974B2B637EF300914214 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				E070974E2B63828800914214 /* ReusableProtocol.swift */,
+				E07097502B63829200914214 /* CellConfigurable.swift */,
+				E07097522B63829C00914214 /* BaseCellDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -479,8 +500,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07097552B6382DC00914214 /* UIViewExtension.swift in Sources */,
 				E07097182B637C9800914214 /* ViewController.swift in Sources */,
 				E07097142B637C9800914214 /* AppDelegate.swift in Sources */,
+				E07097512B63829200914214 /* CellConfigurable.swift in Sources */,
+				E070975B2B63830100914214 /* MockHandler.swift in Sources */,
+				E07097532B63829C00914214 /* BaseCellDelegate.swift in Sources */,
+				E070974F2B63828800914214 /* ReusableProtocol.swift in Sources */,
+				E07097572B6382E800914214 /* UITableViewExtension.swift in Sources */,
+				E07097592B6382F300914214 /* UITableViewCellExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
