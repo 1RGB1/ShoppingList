@@ -33,6 +33,11 @@
 		E070976F2B638D0900914214 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070976E2B638D0900914214 /* BaseModel.swift */; };
 		E07097722B6397B400914214 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097712B6397B400914214 /* SortView.swift */; };
 		E07097742B6397F200914214 /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07097732B6397F200914214 /* SortView.xib */; };
+		E07097762B63C3B400914214 /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097752B63C3B400914214 /* ShoppingListViewModel.swift */; };
+		E070977B2B63C43D00914214 /* ShoppingListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070977A2B63C43D00914214 /* ShoppingListUseCase.swift */; };
+		E070977D2B63C4DD00914214 /* ShoppingListRepoLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070977C2B63C4DD00914214 /* ShoppingListRepoLocal.swift */; };
+		E070977F2B63C6EF00914214 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E070977E2B63C6EF00914214 /* ErrorModel.swift */; };
+		E07097842B63CAB100914214 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07097832B63CAB100914214 /* ItemCellViewModel.swift */; };
 		F9BC2DD5532A14733242E0AF /* Pods_ShoppingList_ShoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +95,11 @@
 		E070976E2B638D0900914214 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		E07097712B6397B400914214 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		E07097732B6397F200914214 /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
+		E07097752B63C3B400914214 /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
+		E070977A2B63C43D00914214 /* ShoppingListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListUseCase.swift; sourceTree = "<group>"; };
+		E070977C2B63C4DD00914214 /* ShoppingListRepoLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListRepoLocal.swift; sourceTree = "<group>"; };
+		E070977E2B63C6EF00914214 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		E07097832B63CAB100914214 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		E7AB6AECD4779591FCBE8EB0 /* Pods_ShoppingList_ShoppingListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingList_ShoppingListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -172,6 +182,7 @@
 				E07097482B637ED800914214 /* Common */,
 				E07097472B637ED000914214 /* MockModel */,
 				E07097462B637EBF00914214 /* Model */,
+				E07097772B63C3F600914214 /* DataSource */,
 				E07097452B637EBA00914214 /* View */,
 				E07097442B637EAE00914214 /* ViewModel */,
 				E07097432B637D3000914214 /* SupportingFiles */,
@@ -211,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				E070975C2B63848D00914214 /* Base */,
+				E07097802B63CA7600914214 /* ShoppingList */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 				E070976D2B638D0000914214 /* Base */,
 				E070976B2B638CE300914214 /* ItemsModel.swift */,
 				E07097692B638CC400914214 /* ItemModel.swift */,
+				E070977E2B63C6EF00914214 /* ErrorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +335,64 @@
 				E07097712B6397B400914214 /* SortView.swift */,
 			);
 			path = SortBottomSheet;
+			sourceTree = "<group>";
+		};
+		E07097772B63C3F600914214 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				E07097792B63C42200914214 /* Repo */,
+				E07097782B63C40600914214 /* UseCase */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		E07097782B63C40600914214 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				E07097822B63CA9A00914214 /* ShoppingList */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E07097792B63C42200914214 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				E07097812B63CA8600914214 /* ShoppingList */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		E07097802B63CA7600914214 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				E07097752B63C3B400914214 /* ShoppingListViewModel.swift */,
+				E07097852B63CADD00914214 /* ItemCell */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		E07097812B63CA8600914214 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				E070977C2B63C4DD00914214 /* ShoppingListRepoLocal.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		E07097822B63CA9A00914214 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				E070977A2B63C43D00914214 /* ShoppingListUseCase.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		E07097852B63CADD00914214 /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				E07097832B63CAB100914214 /* ItemCellViewModel.swift */,
+			);
+			path = ItemCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,7 +642,11 @@
 				E070976F2B638D0900914214 /* BaseModel.swift in Sources */,
 				E07097632B638BE100914214 /* ShoppingListViewController.swift in Sources */,
 				E07097722B6397B400914214 /* SortView.swift in Sources */,
+				E070977D2B63C4DD00914214 /* ShoppingListRepoLocal.swift in Sources */,
 				E07097512B63829200914214 /* CellConfigurable.swift in Sources */,
+				E07097762B63C3B400914214 /* ShoppingListViewModel.swift in Sources */,
+				E070977F2B63C6EF00914214 /* ErrorModel.swift in Sources */,
+				E07097842B63CAB100914214 /* ItemCellViewModel.swift in Sources */,
 				E070976C2B638CE300914214 /* ItemsModel.swift in Sources */,
 				E070976A2B638CC400914214 /* ItemModel.swift in Sources */,
 				E070975B2B63830100914214 /* MockHandler.swift in Sources */,
@@ -579,6 +654,7 @@
 				E070974F2B63828800914214 /* ReusableProtocol.swift in Sources */,
 				E07097572B6382E800914214 /* UITableViewExtension.swift in Sources */,
 				E07097592B6382F300914214 /* UITableViewCellExtension.swift in Sources */,
+				E070977B2B63C43D00914214 /* ShoppingListUseCase.swift in Sources */,
 				E07097672B638C2D00914214 /* ItemTableViewCell.swift in Sources */,
 				E070975E2B63849500914214 /* BaseCellViewModel.swift in Sources */,
 			);

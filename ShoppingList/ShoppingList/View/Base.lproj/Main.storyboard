@@ -70,22 +70,14 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lie-0Y-of9" customClass="SortView" customModule="ShoppingList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lie-0Y-of9" secondAttribute="trailing" id="3gX-bd-eNW"/>
-                            <constraint firstItem="Lie-0Y-of9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ACa-EE-imD"/>
                             <constraint firstItem="5Wg-5z-9WH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bpb-ir-rDq"/>
                             <constraint firstAttribute="bottom" secondItem="5Wg-5z-9WH" secondAttribute="bottom" id="X3o-63-dwh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Wg-5z-9WH" secondAttribute="trailing" id="dAU-6T-mRn"/>
-                            <constraint firstItem="Lie-0Y-of9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eiC-iH-VyP"/>
                             <constraint firstItem="5Wg-5z-9WH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tSg-tl-K1e"/>
-                            <constraint firstAttribute="bottom" secondItem="Lie-0Y-of9" secondAttribute="bottom" id="y67-A1-VdJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="X21-6S-nh9">
@@ -98,7 +90,6 @@
                     <connections>
                         <outlet property="itemsSearchBar" destination="RqO-MP-Q2k" id="dgY-J3-8hg"/>
                         <outlet property="itemsTableView" destination="tWM-mb-xbN" id="Iqa-NW-vGF"/>
-                        <outlet property="sortView" destination="Lie-0Y-of9" id="gig-8h-DhV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

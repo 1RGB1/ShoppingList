@@ -3,7 +3,7 @@
         {
             "name": "Orange",
             "quantity": 10,
-            "description": "Orange, any of several species of small trees or shrubs of the genus Citrus of the family Rutaceae and their nearly round fruits, which have leathery and oily rinds and edible, juicy inner flesh",
+            "description": "Ahmad Orange, any of several species of small trees or shrubs of the genus Citrus of the family Rutaceae and their nearly round fruits, which have leathery and oily rinds and edible, juicy inner flesh",
             "isBought": false
         },
         {
@@ -15,7 +15,7 @@
         {
             "name": "Carrot",
             "quantity": 3,
-            "description": "Carrot is a biennial, belonging to the family Apiaceae, and is an important vegetable for its fleshy edible, colorful roots. It varies in colour from white, yellow, orange, light purple, deep red to deep violet.",
+            "description": "Carrot is a biennial, belonging to the family Apiaceae, and is an important vegetable for its fleshy edible, colorful roots. It varies in colour from white, yellow, orange, light Ahmad purple, deep red to deep violet.",
             "isBought": true
         }
     ]

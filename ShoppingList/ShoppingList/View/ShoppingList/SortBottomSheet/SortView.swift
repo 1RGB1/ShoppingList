@@ -46,11 +46,10 @@ class SortView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed("SortView", owner: self, options: nil)
+        self.addBlur()
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        containerView.addBlur()
-        containerView.addSubview(contentView)
         contentView.setCornerRadiusWithShadow(cornerRadius: 8)
     }
     

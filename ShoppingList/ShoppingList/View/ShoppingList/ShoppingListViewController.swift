@@ -14,45 +14,36 @@ class ShoppingListViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var itemsSearchBar: UISearchBar!
     @IBOutlet weak var itemsTableView: UITableView!
-    @IBOutlet weak var sortView: SortView!
     
     // MARK: Local attributes
     let disposeBag = DisposeBag()
-//    let viewModel = ReposFindViewModel()
+    let viewModel = ShoppingListViewModel()
     var topTableViewCellIndexPath: IndexPath?
     var isBought = false
+    var sortView: SortView?
     
     // MARK: Life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sortView.delegate = self
         prepUI()
         prepSearchBar()
         prepTableView()
         bindDataSourceToTableView()
+        bindSearchBarToTableView()
+        
+        viewModel.loadItems()
     }
-    
-    // MARK: Delegate functions
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//
-//        let visibleIndexPaths = reposTableView.indexPathsForVisibleRows?.sorted { $0.row < $1.row }
-//        topTableViewCellIndexPath = visibleIndexPaths?.first
-//
-//        coordinator.animate(alongsideTransition: nil) { [weak self] _ in
-//            if let indexPath = self?.topTableViewCellIndexPath {
-//                self?.reposTableView.scrollToRow(at: indexPath, at: .top, animated: false)
-//            }
-//        }
-//
-//        super.viewWillTransition(to: size, with: coordinator)
-//    }
     
     // MARK: Local functions
     fileprivate func prepUI() {
         self.title = "Shopping List"
         itemsSearchBar.isHidden = true
-        sortView.isHidden = true
+        
+        sortView = SortView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        sortView!.delegate = self
+        sortView!.isHidden = true
+        self.view.addSubview(sortView!)
     }
     
     fileprivate func prepSearchBar() {
@@ -65,35 +56,23 @@ class ShoppingListViewController: UIViewController {
     }
     
     fileprivate func bindDataSourceToTableView() {
-//        let searchResultObservable = reposSearchBar.rx.text
-//            .orEmpty
-//            .debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
-//            .debug()
-//            .flatMap { [weak self] query -> Observable<[BaseCellViewModel]> in
-//                guard let self = self else { return Observable<[BaseCellViewModel]>.just([]) }
-//
-//                if query.isEmpty {
-//                    return Observable<[BaseCellViewModel]>.just([])
-//                } else {
-//                    ProgressHUD.show()
-//                    self.reposSearchBar.resignFirstResponder()
-//                    let resultObserver = self.viewModel.findGitReposBySearchQuery(query)
-//                    resultObserver.subscribe { [weak self] cellsViewModels in
-//                        self?.handleSuccessState()
-//                    } onError: { [weak self] in
-//                        let error = $0 as? NetworkError
-//                        self?.handleFailureState(error?.errorMsg ?? ErrorType.genericError.rawValue)
-//                    }.disposed(by: self.disposeBag)
-//
-//                    return resultObserver
-//                }
-//            }
-//            .observe(on: MainScheduler.instance)
-//
-//        searchResultObservable.bind(to: reposTableView.rx.items(cellIdentifier: RepoTableViewCell.self.reuseIdentifier)) { [unowned self] (row, viewModel: BaseCellViewModel, cell: RepoTableViewCell) in
-//            cell.setUp(model: viewModel)
-//            cell.delegate = self
-//        }.disposed(by: disposeBag)
+        viewModel.dataSource
+            .bind(to: itemsTableView.rx.items(cellIdentifier: ItemTableViewCell.self.reuseIdentifier)) { (row, viewModel: BaseCellViewModel, cell: ItemTableViewCell) in
+                cell.setUp(model: viewModel)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func bindSearchBarToTableView() {
+        itemsSearchBar.rx.text
+            .orEmpty
+            .subscribe(
+                onNext: { [weak self] query in
+                    guard let self = self else { return }
+                    self.viewModel.findItem(query)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     // MARK: Actions
@@ -103,7 +82,9 @@ class ShoppingListViewController: UIViewController {
     }
     
     @IBAction func sortListTapped(_ sender: UIButton) {
-        sortView.isHidden = false
+        if let sortView = sortView {
+            sortView.isHidden.toggle()
+        }
     }
     
     @IBAction func filterListValueChanged(_ sender: UISwitch) {
@@ -129,6 +110,6 @@ extension ShoppingListViewController: UITextFieldDelegate {
 
 extension ShoppingListViewController: SortViewDelegate {
     func applyTapped(sortBy: SortBy, orderBy: OrderBy) {
-        sortView.isHidden = true
+        sortView?.isHidden = true
     }
 }
