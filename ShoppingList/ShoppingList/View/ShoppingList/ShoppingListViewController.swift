@@ -64,6 +64,7 @@ class ShoppingListViewController: UIViewController {
         bindSearchButton()
         bindSortButton()
         bindFilterSwitch()
+        bindAddItemButton()
     }
     
     fileprivate func bindDataSourceToTableView() {
