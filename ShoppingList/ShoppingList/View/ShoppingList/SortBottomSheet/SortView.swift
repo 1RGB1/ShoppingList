@@ -54,20 +54,20 @@ class SortView: UIView {
     }
     
     @IBAction func sortByTapped(_ sender: UIButton) {
-        let selectedSortBy = SortBy(rawValue: (sender.titleLabel?.text ?? ""))
+        self.selectedSortBy = SortBy(rawValue: (sender.titleLabel?.text ?? "")) ?? .none
         
         sortByButtons.forEach { button in
             let sortBy = SortBy(rawValue: (button.titleLabel?.text ?? ""))
-            button.configuration?.background.backgroundColor = (sortBy == selectedSortBy) ? .systemRed : .systemBlue
+            button.configuration?.background.backgroundColor = (sortBy == self.selectedSortBy) ? .systemRed : .systemBlue
         }
     }
     
     @IBAction func orderByTapped(_ sender: UIButton) {
-        let selectedOrderBy = OrderBy(rawValue: (sender.titleLabel?.text ?? ""))
+        self.selectedOrderBy = OrderBy(rawValue: (sender.titleLabel?.text ?? "")) ?? .none
         
         orderByButtons.forEach { button in
             let orderBy = OrderBy(rawValue: (button.titleLabel?.text ?? ""))
-            button.configuration?.background.backgroundColor = (orderBy == selectedOrderBy) ? .systemRed : .systemBlue
+            button.configuration?.background.backgroundColor = (orderBy == self.selectedOrderBy) ? .systemRed : .systemBlue
         }
     }
     

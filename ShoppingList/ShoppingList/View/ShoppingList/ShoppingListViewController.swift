@@ -18,9 +18,8 @@ class ShoppingListViewController: UIViewController {
     // MARK: Local attributes
     let disposeBag = DisposeBag()
     let viewModel = ShoppingListViewModel()
-    var topTableViewCellIndexPath: IndexPath?
+    var sortView = SortView()
     var isBought = false
-    var sortView: SortView?
     
     // MARK: Life cycle functions
     override func viewDidLoad() {
@@ -41,9 +40,11 @@ class ShoppingListViewController: UIViewController {
         itemsSearchBar.isHidden = true
         
         sortView = SortView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        sortView!.delegate = self
-        sortView!.isHidden = true
-        self.view.addSubview(sortView!)
+        sortView.delegate = self
+        sortView.isHidden = true
+        
+        guard let window = UIApplication.shared.keyWindow else { return }
+        window.addSubview(sortView)
     }
     
     fileprivate func prepSearchBar() {
@@ -83,13 +84,12 @@ class ShoppingListViewController: UIViewController {
     }
     
     @IBAction func sortListTapped(_ sender: UIButton) {
-        if let sortView = sortView {
-            sortView.isHidden.toggle()
-        }
+        sortView.isHidden.toggle()
     }
     
     @IBAction func filterListValueChanged(_ sender: UISwitch) {
         self.isBought = sender.isOn
+        viewModel.findAllBought(sender.isOn)
     }
     
     @IBAction func addNewItemTapped(_ sender: UIBarButtonItem) {
@@ -111,7 +111,8 @@ extension ShoppingListViewController: UITextFieldDelegate {
 
 extension ShoppingListViewController: SortViewDelegate {
     func applyTapped(sortBy: SortBy, orderBy: OrderBy) {
-        sortView?.isHidden = true
+        sortView.isHidden = true
+        viewModel.sortBy(sortBy, andOrderBy: orderBy)
     }
 }
 
@@ -121,5 +122,10 @@ extension ShoppingListViewController: ItemTableViewCellDelegate {
     
     func deleteTappedAtIndex(_ index: Int) {
         viewModel.deleteItemAtIndex(index)
+    }
+    
+    func changeStatus(_ item: ItemModel) {
+        viewModel.updateItem(item)
+        viewModel.findAllBought(self.isBought)
     }
 }

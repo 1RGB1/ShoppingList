@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OP0-Tf-LFm">
-                                                <rect key="frame" x="114" y="0.0" width="186" height="48"/>
+                                                <rect key="frame" x="95" y="0.0" width="224" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvn-YJ-q9C" userLabel="Search Button">
                                                         <rect key="frame" x="0.0" y="7.5" width="43" height="33"/>
@@ -40,12 +40,23 @@
                                                             <action selector="sortListTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ah-aU-D57"/>
                                                         </connections>
                                                     </button>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="isBought" title="Bought" translatesAutoresizingMaskIntoConstraints="NO" id="ebH-uF-NIl" userLabel="Filter Switch">
-                                                        <rect key="frame" x="137" y="8.5" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="filterListValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ykI-M3-7Dq"/>
-                                                        </connections>
-                                                    </switch>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jZP-cf-Und">
+                                                        <rect key="frame" x="137" y="8.5" width="87" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bought" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVZ-XX-IbO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="33" height="31"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="isBought" title="Bought" translatesAutoresizingMaskIntoConstraints="NO" id="ebH-uF-NIl" userLabel="Filter Switch">
+                                                                <rect key="frame" x="38" y="0.0" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="filterListValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ykI-M3-7Dq"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>

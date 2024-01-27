@@ -10,6 +10,7 @@ import UIKit
 protocol ItemTableViewCellDelegate: BaseCellDelegate {
     func deleteTappedAtIndex(_ index: Int)
     func editTappedAtIndex(_ index: Int)
+    func changeStatus(_ item: ItemModel)
 }
 
 class ItemTableViewCell: UITableViewCell {
@@ -38,6 +39,9 @@ class ItemTableViewCell: UITableViewCell {
         }
         
         viewModel?.itemModel.isBought?.toggle()
+        
+        guard let viewModel = viewModel else { return }
+        (delegate as? ItemTableViewCellDelegate)?.changeStatus(viewModel.itemModel)
     }
     
     @IBAction func editTapped(_ sender: Any) {
