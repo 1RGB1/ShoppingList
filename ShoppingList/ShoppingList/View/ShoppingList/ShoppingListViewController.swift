@@ -49,8 +49,7 @@ class ShoppingListViewController: UIViewController {
         sortView.delegate = self
         sortView.isHidden = true
         
-        guard let window = UIApplication.shared.keyWindow else { return }
-        window.addSubview(sortView)
+        UIApplication.topWindow.addSubview(sortView)
     }
     
     fileprivate func prepSearchBar() {
