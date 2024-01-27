@@ -73,7 +73,7 @@ class ShoppingListViewController: UIViewController {
     fileprivate func bindDataSourceToTableView() {
         viewModel.dataSource
             .bind(to: itemsTableView.rx.items(cellIdentifier: ItemTableViewCell.self.reuseIdentifier)) { (row, viewModel: BaseCellViewModel, cell: ItemTableViewCell) in
-                cell.setUp(model: viewModel, row: row)
+                cell.setUp(model: viewModel)
                 cell.delegate = self
             }
             .disposed(by: disposeBag)
@@ -166,8 +166,8 @@ extension ShoppingListViewController: ItemTableViewCellDelegate {
         self.navigationController?.pushViewController(itemDetailsViewController, animated: true)
     }
     
-    func deleteTappedAtIndex(_ index: Int) {
-        viewModel.deleteItemAtIndex(index)
+    func deleteTappedWithId(_ id: Int) {
+        viewModel.deleteItemWithId(id)
     }
     
     func changeStatus(_ item: ItemModel) {

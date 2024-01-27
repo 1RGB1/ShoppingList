@@ -25,7 +25,7 @@ struct ItemDetailsUseCase: ItemDetailsUseCaseProtocol {
             .flatMap { result -> Observable<Void> in
                 switch result {
                 case .success:
-                    let savedItemIndex = Global.items.firstIndex { $0.name == item.name && $0.description == item.description }
+                    let savedItemIndex = Global.items.firstIndex { $0.id == item.id }
                     if let savedItemIndex = savedItemIndex {
                         Global.items[savedItemIndex] = item
                     } else {

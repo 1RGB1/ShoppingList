@@ -61,8 +61,15 @@ class ItemDetailsViewController: UIViewController {
                 onNext: { [weak self] in
                     guard let self = self else { return }
                     guard let viewModel = self.viewModel else { return }
+                    
+                    var id = Int.random(in: 0..<Int.max)
+                    if let itemModel = self.itemModel {
+                        id = itemModel.id
+                    }
+                    
                     viewModel.saveItem(
                         ItemModel(
+                            id: id,
                             name: self.nameTextField.text,
                             quantity: Int(self.quantityTextField.text ?? "0"),
                             description: self.descriptionTextView.text,

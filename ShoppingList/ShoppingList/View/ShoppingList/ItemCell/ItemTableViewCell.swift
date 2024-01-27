@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ItemTableViewCellDelegate: BaseCellDelegate {
-    func deleteTappedAtIndex(_ index: Int)
+    func deleteTappedWithId(_ id: Int)
     func editTappedForItem(_ item: ItemModel)
     func changeStatus(_ item: ItemModel)
 }
@@ -23,7 +23,6 @@ class ItemTableViewCell: UITableViewCell {
     
     weak var delegate: BaseCellDelegate?
     var viewModel: ItemCellViewModel?
-    var index: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,16 +49,15 @@ class ItemTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteTapped(_ sender: Any) {
-        guard let index = index else { return }
-        (delegate as? ItemTableViewCellDelegate)?.deleteTappedAtIndex(index)
+        guard let viewModel = viewModel else { return }
+        (delegate as? ItemTableViewCellDelegate)?.deleteTappedWithId(viewModel.itemModel.id)
     }
 }
 
 extension ItemTableViewCell: CellConfigurable {
-    func setUp(model: BaseCellViewModel, row: Int) {
+    func setUp(model: BaseCellViewModel) {
         guard let model = model as? ItemCellViewModel else { return }
         
-        self.index = row
         self.viewModel = model
         
         itemNameLabel.text = model.itemModel.name ?? "N/A"
@@ -73,4 +71,3 @@ extension ItemTableViewCell: CellConfigurable {
         }
     }
 }
-
