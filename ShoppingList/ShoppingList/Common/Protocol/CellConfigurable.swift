@@ -16,6 +16,7 @@ protocol CellConfigurable: UITableViewCell {
     
     /// To setup cell with its view model
     /// - Parameters:
-    ///   - model:   cell's view model
-    func setUp(model: BaseCellViewModel)
+    ///   - model: cell's view model
+    ///   - row: cell's index
+    func setUp(model: BaseCellViewModel, row: Int)
 }
