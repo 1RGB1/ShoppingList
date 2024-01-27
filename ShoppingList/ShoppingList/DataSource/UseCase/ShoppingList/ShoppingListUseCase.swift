@@ -11,7 +11,7 @@ import RxSwift
 protocol ShoppingListUseCaseProtocol {
     func loadItems() -> Observable<[ItemModel]>
     func findItem(_ query: String) -> Observable<[ItemModel]>
-    func deleteItemAtIndex(_ index: Int) -> Observable<[ItemModel]>
+    func deleteItemWithId(_ id: Int) -> Observable<[ItemModel]>
     func findAllBought(_ isBought: Bool) -> Observable<[ItemModel]>
     func sortBy(_ sortBy: SortBy, andOrderBy orderBy: OrderBy) -> Observable<[ItemModel]>
 }
@@ -33,17 +33,25 @@ struct ShoppingListUseCase: ShoppingListUseCaseProtocol {
     func findItem(_ query: String) -> Observable<[ItemModel]> {
         return loadItems()
             .flatMap { items -> Observable<[ItemModel]> in
-                let filtered = items.filter { ($0.name?.lowercased() ?? "").contains(query.lowercased()) || ($0.description?.lowercased() ?? "").contains(query.lowercased()) }
-                return Observable<[ItemModel]>.just(filtered)
+                if query.isEmpty {
+                    return Observable<[ItemModel]>.just(items)
+                } else {
+                    let filtered = items.filter { ($0.name?.lowercased() ?? "").contains(query.lowercased()) || ($0.description?.lowercased() ?? "").contains(query.lowercased()) }
+                    return Observable<[ItemModel]>.just(filtered)
+                }
             }
     }
     
-    func deleteItemAtIndex(_ index: Int) -> Observable<[ItemModel]> {
+    func deleteItemWithId(_ id: Int) -> Observable<[ItemModel]> {
         return loadItems()
             .flatMap { items -> Observable<[ItemModel]> in
                 var newList = items
-                newList.remove(at: index)
-                Global.items.remove(at: index)
+                let savedItemIndex = Global.items.firstIndex { $0.id == id }
+                if let savedItemIndex = savedItemIndex {
+                    Global.items.remove(at: savedItemIndex)
+                    newList.remove(at: savedItemIndex)
+                }
+                
                 return Observable<[ItemModel]>.just(newList)
             }
     }

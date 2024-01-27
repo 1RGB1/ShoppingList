@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SortView" customModule="ShoppingList" customModuleProvider="target">
             <connections>
+                <outlet property="applyButton" destination="gy3-HN-QVu" id="AEo-pI-gac"/>
+                <outlet property="clearButton" destination="gQd-yx-BSZ" id="L9k-gY-esf"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="DBR-Vs-0Hw"/>
                 <outlet property="contentView" destination="6Y2-S2-CWe" id="dg1-ud-891"/>
                 <outletCollection property="sortByButtons" destination="dJG-dQ-xtk" collectionClass="NSMutableArray" id="M5m-vz-L26"/>
@@ -56,7 +58,7 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="sortByTapped:" destination="-1" eventType="touchUpInside" id="ic4-cq-jw8"/>
+                                                        <action selector="sortByTapped:" destination="-1" eventType="touchUpInside" id="JPU-MR-rDj"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRQ-bA-gZj">
@@ -73,7 +75,7 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="sortByTapped:" destination="-1" eventType="touchUpInside" id="Lh1-LF-x2S"/>
+                                                        <action selector="sortByTapped:" destination="-1" eventType="touchUpInside" id="nnL-Sv-1lK"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -115,7 +117,7 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="orderByTapped:" destination="-1" eventType="touchUpInside" id="xwV-9y-Qy9"/>
+                                                        <action selector="orderByTapped:" destination="-1" eventType="touchUpInside" id="je8-0h-GCo"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsD-fS-oEy">
@@ -132,7 +134,7 @@
                                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="orderByTapped:" destination="-1" eventType="touchUpInside" id="LVr-SP-73x"/>
+                                                        <action selector="orderByTapped:" destination="-1" eventType="touchUpInside" id="mgl-2Q-TCU"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -164,9 +166,6 @@
                                                 <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
-                                            <connections>
-                                                <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="ek4-bc-cxf"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQd-yx-BSZ" userLabel="Clear">
                                             <rect key="frame" x="181.5" y="0.0" width="166.5" height="48"/>
@@ -181,9 +180,6 @@
                                                 <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
-                                            <connections>
-                                                <action selector="clearTapped:" destination="-1" eventType="touchUpInside" id="qI0-I1-z9g"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>

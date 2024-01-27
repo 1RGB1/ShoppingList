@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum SortBy: String {
     case name = "Name"
@@ -29,7 +31,10 @@ class SortView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet var sortByButtons: [UIButton]!
     @IBOutlet var orderByButtons: [UIButton]!
+    @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
+    let disposeBag = DisposeBag()
     weak var delegate: SortViewDelegate?
     private var selectedSortBy: SortBy = .none
     private var selectedOrderBy: OrderBy = .none
@@ -51,6 +56,9 @@ class SortView: UIView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         contentView.setCornerRadiusWithShadow(cornerRadius: 8)
+        
+        bindApplyButton()
+        bindClearButton()
     }
     
     @IBAction func sortByTapped(_ sender: UIButton) {
@@ -71,12 +79,30 @@ class SortView: UIView {
         }
     }
     
-    @IBAction func applyTapped(_ sender: UIButton) {
-        delegate?.applyTapped(sortBy: self.selectedSortBy, orderBy: self.selectedOrderBy)
+    private func bindApplyButton() {
+        applyButton
+            .rx
+            .controlEvent(.touchUpInside)
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.delegate?.applyTapped(sortBy: self.selectedSortBy, orderBy: self.selectedOrderBy)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
-    @IBAction func clearTapped(_ sender: UIButton) {
-        clear()
+    private func bindClearButton() {
+        clearButton
+            .rx
+            .controlEvent(.touchUpInside)
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.clear()
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     private func clear() {

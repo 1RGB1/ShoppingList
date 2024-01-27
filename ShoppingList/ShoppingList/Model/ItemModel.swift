@@ -8,6 +8,7 @@
 import Foundation
 
 struct ItemModel: Codable {
+    var id: Int
     var name: String?
     var quantity: Int?
     var description: String?
