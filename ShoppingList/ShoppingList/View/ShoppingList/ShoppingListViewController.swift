@@ -33,7 +33,10 @@ class ShoppingListViewController: UIViewController {
         prepSearchBar()
         prepTableView()
         bindViews()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.loadItems()
     }
     
@@ -138,7 +141,9 @@ class ShoppingListViewController: UIViewController {
             .subscribe(
                 onNext: { [weak self] in
                     guard let self = self else { return }
-                    let itemDetailsViewController = ItemDetailsViewController()
+                    let story = UIStoryboard(name: "Main", bundle: .main)
+                    guard let itemDetailsViewController = story.instantiateViewController(withIdentifier: "ItemDetailsViewController") as? ItemDetailsViewController else { return }
+                    itemDetailsViewController.viewModel = ItemDetailsViewModel()
                     self.navigationController?.pushViewController(itemDetailsViewController, animated: true)
                 }
             )
@@ -155,7 +160,9 @@ extension ShoppingListViewController: SortViewDelegate {
 
 extension ShoppingListViewController: ItemTableViewCellDelegate {
     func editTappedForItem(_ item: ItemModel) {
-        let itemDetailsViewController = ItemDetailsViewController(viewModel: ItemDetailsViewModel(screenTitle: "Edit item", itemModel: item))
+        let story = UIStoryboard(name: "Main", bundle: .main)
+        guard let itemDetailsViewController = story.instantiateViewController(withIdentifier: "ItemDetailsViewController") as? ItemDetailsViewController else { return }
+        itemDetailsViewController.viewModel = ItemDetailsViewModel(screenTitle: "Edit item", itemModel: item)
         self.navigationController?.pushViewController(itemDetailsViewController, animated: true)
     }
     

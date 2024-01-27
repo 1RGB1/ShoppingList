@@ -101,7 +101,7 @@
         <!--Item Details View Controller-->
         <scene sceneID="aLo-6l-OF5">
             <objects>
-                <viewController id="ZMf-yL-5v8" customClass="ItemDetailsViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDetailsViewController" id="ZMf-yL-5v8" customClass="ItemDetailsViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WTy-jR-RWa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,9 +178,6 @@
                                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="saveItemTapped:" destination="ZMf-yL-5v8" eventType="touchUpInside" id="f49-SN-Ymr"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -211,6 +208,7 @@
                         <outlet property="descriptionTextView" destination="VLr-Fd-dgB" id="SNC-zE-4jP"/>
                         <outlet property="nameTextField" destination="vU7-ly-yLy" id="krQ-I3-FLz"/>
                         <outlet property="quantityTextField" destination="EhJ-5G-FMH" id="skt-08-6Og"/>
+                        <outlet property="saveButton" destination="XQS-D6-9LB" id="6C1-Fu-jji"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RiK-n2-sl9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
