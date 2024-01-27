@@ -33,7 +33,7 @@ class ItemTableViewCell: UITableViewCell {
     
     @IBAction func isBoughtTapped(_ sender: UIButton) {
         if let isBought = viewModel?.itemModel.isBought, isBought {
-            sender.setImage(nil, for: .normal)
+            sender.setImage(UIImage(named: "ic_not_selected"), for: .normal)
         } else {
             sender.setImage(UIImage(named: "ic_selected"), for: .normal)
         }
@@ -69,7 +69,7 @@ extension ItemTableViewCell: CellConfigurable {
         if model.itemModel.isBought ?? false {
             isBoughtButton.setImage(UIImage(named: "ic_selected"), for: .normal)
         } else {
-            isBoughtButton.setImage(nil, for: .normal)
+            isBoughtButton.setImage(UIImage(named: "ic_not_selected"), for: .normal)
         }
     }
 }
