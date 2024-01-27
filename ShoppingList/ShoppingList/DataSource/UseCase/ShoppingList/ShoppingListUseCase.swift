@@ -33,8 +33,12 @@ struct ShoppingListUseCase: ShoppingListUseCaseProtocol {
     func findItem(_ query: String) -> Observable<[ItemModel]> {
         return loadItems()
             .flatMap { items -> Observable<[ItemModel]> in
-                let filtered = items.filter { ($0.name?.lowercased() ?? "").contains(query.lowercased()) || ($0.description?.lowercased() ?? "").contains(query.lowercased()) }
-                return Observable<[ItemModel]>.just(filtered)
+                if query.isEmpty {
+                    return Observable<[ItemModel]>.just(items)
+                } else {
+                    let filtered = items.filter { ($0.name?.lowercased() ?? "").contains(query.lowercased()) || ($0.description?.lowercased() ?? "").contains(query.lowercased()) }
+                    return Observable<[ItemModel]>.just(filtered)
+                }
             }
     }
     

@@ -14,6 +14,10 @@ class ShoppingListViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var itemsSearchBar: UISearchBar!
     @IBOutlet weak var itemsTableView: UITableView!
+    @IBOutlet weak var addItemButton: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var sortButton: UIButton!
+    @IBOutlet weak var filterSwitch: UISwitch!
     
     // MARK: Local attributes
     let disposeBag = DisposeBag()
@@ -28,8 +32,7 @@ class ShoppingListViewController: UIViewController {
         prepUI()
         prepSearchBar()
         prepTableView()
-        bindDataSourceToTableView()
-        bindSearchBarToTableView()
+        bindViews()
         
         viewModel.loadItems()
     }
@@ -49,11 +52,18 @@ class ShoppingListViewController: UIViewController {
     
     fileprivate func prepSearchBar() {
         itemsSearchBar.becomeFirstResponder()
-        itemsSearchBar.searchTextField.delegate = self
     }
     
     fileprivate func prepTableView() {
         itemsTableView.registerCell(ItemTableViewCell.self)
+    }
+    
+    fileprivate func bindViews() {
+        bindSearchBarToTableView()
+        bindDataSourceToTableView()
+        bindSearchButton()
+        bindSortButton()
+        bindFilterSwitch()
     }
     
     fileprivate func bindDataSourceToTableView() {
@@ -78,34 +88,60 @@ class ShoppingListViewController: UIViewController {
     }
     
     // MARK: Actions
-    @IBAction func searchItemTapped(_ sender: UIButton) {
-        itemsSearchBar.isHidden.toggle()
-        itemsSearchBar.text = ""
+    fileprivate func bindSearchButton() {
+        searchButton
+            .rx
+            .controlEvent(.touchUpInside)
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.itemsSearchBar.isHidden.toggle()
+                    self.itemsSearchBar.text = ""
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
-    @IBAction func sortListTapped(_ sender: UIButton) {
-        sortView.isHidden.toggle()
+    fileprivate func bindSortButton() {
+        sortButton
+            .rx
+            .controlEvent(.touchUpInside)
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.sortView.isHidden.toggle()
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
-    @IBAction func filterListValueChanged(_ sender: UISwitch) {
-        self.isBought = sender.isOn
-        viewModel.findAllBought(sender.isOn)
+    fileprivate func bindFilterSwitch() {
+        filterSwitch
+            .rx
+            .controlEvent(.valueChanged)
+            .withLatestFrom(filterSwitch.rx.value)
+            .subscribe(
+                onNext: { [weak self] isOn in
+                    guard let self = self else { return }
+                    self.isBought = isOn
+                    self.viewModel.findAllBought(isOn)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
-    @IBAction func addNewItemTapped(_ sender: UIBarButtonItem) {
-    }
-}
-
-// MARK: Extensions
-extension ShoppingListViewController: UITextFieldDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
+    fileprivate func bindAddItemButton() {
+        addItemButton
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    let itemDetailsViewController = ItemDetailsViewController()
+                    self.navigationController?.pushViewController(itemDetailsViewController, animated: true)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
 
@@ -117,7 +153,9 @@ extension ShoppingListViewController: SortViewDelegate {
 }
 
 extension ShoppingListViewController: ItemTableViewCellDelegate {
-    func editTappedAtIndex(_ index: Int) {
+    func editTappedForItem(_ item: ItemModel) {
+        let itemDetailsViewController = ItemDetailsViewController(viewModel: ItemDetailsViewModel(screenTitle: "Edit item", itemModel: item))
+        self.navigationController?.pushViewController(itemDetailsViewController, animated: true)
     }
     
     func deleteTappedAtIndex(_ index: Int) {
