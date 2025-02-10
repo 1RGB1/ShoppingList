@@ -15,5 +15,5 @@ extension Reusable {
     /// To convert and return the class name in string fotmate
     static var reuseIdentifier: String {
         return String(describing: self)
-    }
+    } 
 }
